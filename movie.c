@@ -34,7 +34,10 @@ void mv_print(void* obj)
 	return;
 }
 
-
+int mv_printAll(void* obj, void* arg)
+{
+	
+}
 //return the score value from the input instance of movInfo_t structure
 float mv_getScore(void* obj)
 {  
