@@ -24,15 +24,13 @@ int main(int argc, char *argv[]) {
 	list = list_genList();//
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	struct movInfo m[4];
-	int i;
-	while (1 /* read name, country, runtime and score*/ )
+
+	while ((c = fgetc(fp)) != EOF/* read name, country, runtime and score*/ )
 	{	
-	     for(i=0;i<4;i++)
-	     {
-	     	fscanf(fp,"%s %s %i %i",&m[i].madeIn,&m[i].name,&m[i].runTime,&m[i].score);
-		 }
-	    //mvInfo = mv_genMvInfo();
+	     fscanf(fp,"%s%s%f%f\n",&name,&country,&runTime,&score);
+	     printf("%s %s %f %f\n",name,country,runTime,score);
+	     
+	    // mvInfo = mv_genMvInfo();
 	   
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
@@ -40,10 +38,6 @@ int main(int argc, char *argv[]) {
 
 	fclose(fp);//1.4 FILE close
 	
-	for(i=0;i<4;i++)
-	     {
-	     	printf("%s %s %i %i",m[i].madeIn,m[i].name,m[i].runTime,m[i].score);
-		 }
 	
 	//2. program start
 	while(exit_flag == 0)
