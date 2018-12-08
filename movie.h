@@ -1,3 +1,4 @@
+typedef struct movInfo;
 void* mv_genMvInfo(char* name, float score, int runTime, char* country);
 void mv_print(void* obj);
 int mv_printAll(void* obj, void* arg);

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "movie.h"
+#include "linkedList.h"
 int main(int argc, char *argv[]) {
 	
 	FILE *fp;  //FILE pointer for reading movie data 
@@ -16,24 +17,26 @@ int main(int argc, char *argv[]) {
 	int (*repFunc)(void* obj, void* arg); //function pointer for using list_repeatFunc() function
 	void *arg; //a void pointer for passing argument to repFunc
 	int cnt; //integer variable
-	char c;
-    fp=fopen("movie.dat","r");//1. reading the movie.dat-----------------------------
-                        	//1.1 FILE open
+	char c[500];
+	int i;
+	//1. movie.dat 파일 읽기
+	 
+    fp=fopen("movie.dat","r");//파일 오픈
 	
-	//1.2 list generation (use function list_genList() )
+	
 	list = list_genList();//
 	
-	//1.3 read each movie data from the file and add it to the linked list
-
-	while ((c = fgetc(fp)) != EOF/* read name, country, runtime and score*/ )
+	//파일읽기  
+	while ((c[500] = fgetc(fp)) != EOF/* read name, country, runtime and score*/ )
 	{	
-	     fscanf(fp,"%s%s%f%f\n",&name,&country,&runTime,&score);
-	     printf("%s %s %f %f\n",name,country,runTime,score);
-	     
+	 
+	     fgets(c,500,fp);
+	     printf(c);
+	 
 	    // mvInfo = mv_genMvInfo();
 	   
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-		list_addTail(mvInfo, list);
+	//	list_addTail(mvInfo, list);
 	}
 
 	fclose(fp);//1.4 FILE close
