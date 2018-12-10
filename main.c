@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 	int (*repFunc)(void* obj, void* arg); //function pointer for using list_repeatFunc() function
 	void *arg; //a void pointer for passing argument to repFunc
 	int cnt; //integer variable
-	char c[500];
+	char c;
 	int i;
 	//1. movie.dat 파일 읽기
 	 
@@ -27,13 +27,14 @@ int main(int argc, char *argv[]) {
 	list = list_genList();//
 	
 	//파일읽기  
-	while ((c[500] = fgetc(fp)) != EOF/* read name, country, runtime and score*/ )
+
+	while (fscanf(fp,"%s %s %f %f ", &name, &country, &runTime, &score) != EOF )
 	{	
 	 
-	     fgets(c,500,fp);
-	     printf(c);
+	     
+	     printf("%s %s %f %f\n",name,country,runTime,score);
 	 
-	    // mvInfo = mv_genMvInfo();
+	   // mvInfo = mv_genMvInfo();
 	   
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 	//	list_addTail(mvInfo, list);
@@ -50,7 +51,7 @@ int main(int argc, char *argv[]) {
 		printf("2.search for specific country movies\n");
 		printf("3.search for specific runtime movies\n");	//2.1 print menu message and get input option
 		printf("4.search for specific score movies\n");
-		printf("5.exit");
+		printf("5.exit\n");
 		
 		printf("select an option : ");
 		scanf("%i",&option);
