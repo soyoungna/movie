@@ -15,13 +15,13 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 	movInfo_t* mvPtr; 
 	
 	mvPtr = (int *) malloc(100*sizeof(int));
-
-
-    
-    
 	
-	//allocate memory and set the member variables
-	
+	strcpy(mvPtr->name,name);
+	strcpy(mvPtr->madeIn,country);
+	mvPtr->runTime=runTime;
+	mvPtr->score=score;
+		
+  
 	return (void*)mvPtr;
 }
 void mv_print(void* obj)
@@ -41,6 +41,10 @@ void mv_print(void* obj)
 
 int mv_printAll(void* obj, void* arg)
 {
+	
+	mv_print(obj);
+	
+	return;
 	
 }
 //return the score value from the input instance of movInfo_t structure

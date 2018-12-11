@@ -17,9 +17,7 @@ int main(int argc, char *argv[]) {
 	int (*repFunc)(void* obj, void* arg); //function pointer for using list_repeatFunc() function
 	void *arg; //a void pointer for passing argument to repFunc
 	int cnt; //integer variable
-	char c;
-	int i;
-	//1. movie.dat 파일 읽기
+	
 	 
     fp=fopen("movie.dat","r");//파일 오픈
 	
@@ -28,16 +26,15 @@ int main(int argc, char *argv[]) {
 	
 	//파일읽기  
 
-	while (fscanf(fp,"%s %s %f %f ", &name, &country, &runTime, &score) != EOF )
+	while (fscanf(fp,"%s %s %d %f ", name, country, &runTime, &score) != EOF )
 	{	
 	 
+	     mvInfo = mv_genMvInfo(name,score,runTime,country);
 	     
-	     printf("%s %s %f %f\n",name,country,runTime,score);
+	     list_addTail(mvInfo, list);
+	     
+	     printf("%s %s %d %f\n",name,country,runTime,score);
 	 
-	   // mvInfo = mv_genMvInfo();
-	   
-		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-	//	list_addTail(mvInfo, list);
 	}
 
 	fclose(fp);//1.4 FILE close
@@ -58,7 +55,7 @@ int main(int argc, char *argv[]) {
 		
 		switch(option)
 		{
-			case 1: //print all the movies
+			case 1: 
 				printf("\nprinting all the movies in the list.....\n\n\n");
 				printf("----------------------------------------\n");
 				
@@ -67,7 +64,7 @@ int main(int argc, char *argv[]) {
 				break;
 				
 			case 2: //print movies of specific country
-                printf("select a country : \n");
+                printf("input a country : \n");
                 
                 printf("----------------------------------------\n");
                 
