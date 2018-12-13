@@ -5,26 +5,25 @@
 #include "linkedList.h"
 int main(int argc, char *argv[]) {
 	
-	FILE *fp;  //FILE pointer for reading movie data 
-	char name[200]; //movie name
-	char country[10]; //movie country
-	int runTime; //movie runtime
-	float score; //movie score
+	FILE *fp;  
+	char name[200]; 
+	char country[10]; 
+	int runTime; 
+	float score; 
 	
-	int exit_flag = 0; //flag variable for while loop
-	int option; //user input option
-	void *list, *mvInfo; //pointers for linked list and a specific structure instance for a movie data
-	int (*repFunc)(void* obj, void* arg); //function pointer for using list_repeatFunc() function
-	void *arg; //a void pointer for passing argument to repFunc
-	int cnt; //integer variable
+	int exit_flag = 0; 
+	int option; 
+	void *list, *mvInfo; 
+	int (*repFunc)(void* obj, void* arg); 
+	void *arg; 
+	int cnt; 
+	 
+    fp=fopen("movie.dat","r");
+	
+	
+	list = list_genList();
 	
 	 
-    fp=fopen("movie.dat","r");//파일 오픈
-	
-	
-	list = list_genList();//
-	
-	//파일읽기  
 
 	while (fscanf(fp,"%s %s %d %f ", name, country, &runTime, &score) != EOF )
 	{	
@@ -45,7 +44,7 @@ int main(int argc, char *argv[]) {
 	    printf("-------------MENU-------------\n");
 		printf("1.print all the movies\n");
 		printf("2.search for specific country movies\n");
-		printf("3.search for specific runTime movies\n");	//2.1 print menu message and get input option
+		printf("3.search for specific runTime movies\n");	
 		printf("4.search for specific score movies\n");
 		printf("5.exit\n");
 		
@@ -72,20 +71,22 @@ int main(int argc, char *argv[]) {
                 list_repeatFunc(repFunc,arg,list);
 				break;
 				
-			case 3: //print movies with long runtime
+			case 3: 
 
-
+                printf("input a runTime : \n");
+                scanf("%i",&runTime);
                 repFunc = mv_printRunTime;
-                arg = runTime;
+                arg=&runTime;
                 list_repeatFunc(repFunc,arg,list);
                 
 
 				break;
 				
-			case 4: //print movies with high score
-				
+			case 4: 
+				printf("input a score : \n");
+                scanf("%f",&score);
 				repFunc = mv_printScore;
-				arg=score;
+				arg=&score;
 				list_repeatFunc(repFunc,arg,list);
 				break;
 				
@@ -100,8 +101,7 @@ int main(int argc, char *argv[]) {
 				break;
 		}
 		
-		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
-		//2.3 print number of movies
+
 	}
 	
 	return 0;
