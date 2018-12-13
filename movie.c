@@ -53,10 +53,10 @@ int mv_printScore(void* obj, void* arg)
 	
    if((*(float*)arg)<=mvPtr->score){
    	
-   	printMv(obj);
+   	printMv(obj);//void 포인터를 float포인터로 형변환하였다. 
    	
    }
-   return ;
+   return;
 }
 
 int mv_printRunTime(void* obj, void* arg)
@@ -65,7 +65,7 @@ int mv_printRunTime(void* obj, void* arg)
 	
    if((*(int*)arg)<=mvPtr->runTime){
    	
-   	printMv(obj);
+   	printMv(obj); //void 포인터를 int포인터로 형변환하였다.  
    	
    }
    return;
@@ -80,7 +80,7 @@ int mv_printCountry(void* obj, void* arg)
    	printMv(obj);
    	
    }
-   return 0;
+   return;
 }
 
 
