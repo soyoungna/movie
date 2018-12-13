@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=6
+UnitCount=5
 
 [VersionInfo]
 Major=1
@@ -70,17 +70,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit3]
-FileName=movie.dat
-Folder=
-Compile=0
-Link=0
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit4]
-FileName=movie.h
+FileName=linkedList.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -90,7 +81,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=linkedList.h
+FileName=linkedList.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -101,6 +92,16 @@ BuildCmd=
 
 [Unit6]
 FileName=linkedList.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit3]
+FileName=movie.h
 CompileCpp=0
 Folder=
 Compile=1
