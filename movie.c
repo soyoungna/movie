@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "movie.h"
 
-typedef struct movInfo{
-	char name[200];
+//structure definition
+typedef struct movInfo {
+	char name[100];
 	float score;
 	int runTime;
 	char madeIn[10];
@@ -11,23 +13,22 @@ typedef struct movInfo{
 
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
+	movInfo_t* mvPtr;
 	
-	movInfo_t* mvPtr; 
-	
-	mvPtr = (int *) malloc(100*sizeof(int));
+	mvPtr = (movInfo_t*) malloc(sizeof(movInfo_t));
 	
 	strcpy(mvPtr->name,name);
 	strcpy(mvPtr->madeIn,country);
 	mvPtr->runTime=runTime;
 	mvPtr->score=score;
-		
-  
+	//allocate memory and set the member variables
+	
 	return (void*)mvPtr;
 }
-void mv_print(void* obj)
+
+void printMv(void* obj)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	
 	if (mvPtr == NULL)
 	{
 		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
@@ -41,34 +42,31 @@ void mv_print(void* obj)
 
 int mv_printAll(void* obj, void* arg)
 {
-	
-	mv_print(obj);
+	printMv(obj);
 	
 	return;
-	
-}
-//return the score value from the input instance of movInfo_t structure
-float mv_getScore(void* obj)
-{  
-  
 }
 
-//return the runtime value from the input instance of movInfo_t structure
-int mv_getRunTime(void* obj)
+int mv_printScore(void* obj, void* arg)
 {
 	
 }
 
-//return the name string pointer from the input instance of movInfo_t structure
-char* mv_getName(void* obj)
+int mv_printRunTime(void* obj, void* arg)
 {
 	
 }
 
-//return the country string pointer from the input instance of movInfo_t structure
-char* mv_getCountry(void* obj)
+int mv_printCountry(void* obj, void* arg)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+   if(!strcmp(arg,mvPtr->madeIn)){
+   	
+   	printMv(arg);
+   	
+   }
 }
+
 
 

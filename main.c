@@ -33,53 +33,54 @@ int main(int argc, char *argv[]) {
 	     
 	     list_addTail(mvInfo, list);
 	     
-	     printf("%s %s %d %f\n",name,country,runTime,score);
 	 
 	}
 
-	fclose(fp);//1.4 FILE close
+	fclose(fp);
 	
+	printf("reading done ! find %i movies \n\n\n",list_len(list));
 	
-	//2. program start
 	while(exit_flag == 0)
 	{
 	    printf("-------------MENU-------------\n");
 		printf("1.print all the movies\n");
 		printf("2.search for specific country movies\n");
-		printf("3.search for specific runtime movies\n");	//2.1 print menu message and get input option
+		printf("3.search for specific runTime movies\n");	//2.1 print menu message and get input option
 		printf("4.search for specific score movies\n");
 		printf("5.exit\n");
 		
 		printf("select an option : ");
-		scanf("%i",&option);
+		scanf("%d",&option);
 		
 		switch(option)
 		{
 			case 1: 
 				printf("\nprinting all the movies in the list.....\n\n\n");
 				printf("----------------------------------------\n");
-				
 				repFunc = mv_printAll;
 				arg = NULL;
+				list_repeatFunc(repFunc,arg,list);
 				break;
 				
-			case 2: //print movies of specific country
+			case 2: 
                 printf("input a country : \n");
-                
+                scanf("%s",country);
                 printf("----------------------------------------\n");
                 
-                repFunc = mv_getCountry;
+                repFunc = mv_printCountry;
+                arg=country;
+                list_repeatFunc(repFunc,arg,list);
 				break;
 				
 			case 3: //print movies with long runtime
 
-                repFunc = mv_getRunTime;
+                repFunc = mv_printRunTime;
                 
 				break;
 				
 			case 4: //print movies with high score
 				
-				repFunc = mv_getScore;
+				repFunc = mv_printScore;
 				break;
 				
 			case 5:
