@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 				break;
 				
 			case 2: 
-                printf("input a country : \n");
+                printf("input a country : ");
                 scanf("%s",country);
                 printf("----------------------------------------\n");
                 
@@ -73,20 +73,22 @@ int main(int argc, char *argv[]) {
 				
 			case 3: 
 
-                printf("input a runTime : \n");
+                printf("input a runTime : ");
                 scanf("%i",&runTime);
+                
                 repFunc = mv_printRunTime;
-                arg=&runTime;
+                arg = &runTime;
                 list_repeatFunc(repFunc,arg,list);
                 
 
 				break;
 				
 			case 4: 
-				printf("input a score : \n");
+				printf("input a score : ");
                 scanf("%f",&score);
+                
 				repFunc = mv_printScore;
-				arg=&score;
+				arg = &score;
 				list_repeatFunc(repFunc,arg,list);
 				break;
 				
