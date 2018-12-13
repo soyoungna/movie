@@ -74,13 +74,19 @@ int main(int argc, char *argv[]) {
 				
 			case 3: //print movies with long runtime
 
+
                 repFunc = mv_printRunTime;
+                arg = runTime;
+                list_repeatFunc(repFunc,arg,list);
                 
+
 				break;
 				
 			case 4: //print movies with high score
 				
 				repFunc = mv_printScore;
+				arg=score;
+				list_repeatFunc(repFunc,arg,list);
 				break;
 				
 			case 5:
